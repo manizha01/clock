@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js-clock</title>
+    <style type="text/css">
+    body {
+        background-color: rgb(74, 21, 134);
+    }
+    .clock {
+        position: absolute;
+        top: 50%;
+        left: 35%;
+        color: beige;
+        font-size: 80px;
+    }
+    </style>
+</head>
+<body>
+    <div id="MyClockDisplay" class="clock"></div>
+    <script type="text/javascript">
+        function showTime() {
+            let date = new Date(); 
+                let h = date.getHours();
+                let m = date.getMinutes();
+                let s = date.getSeconds();
+                let session = "PM";
+
+                if(h == 0) {
+                    h = 12;
+                }
+                if(h > 12) {
+                    h = h - 12;
+                    session = "AM";
+                }
+                h =  (h < 10) ? "0" + h : h;
+                m =  (m < 10) ? "0" + m : m;
+                s =  (s < 10) ? "0" + s : s;
+
+                let time = h + ":" + m + ":" + s + " " + session;
+                document.getElementById("MyClockDisplay").innerText = time;
+                document.getElementById("MyClockDisplay").textContent = time;
+
+            setTimeout(showTime, 1000);
+            }
+            showTime();
+
+    </script>
+</body>
+</html>
